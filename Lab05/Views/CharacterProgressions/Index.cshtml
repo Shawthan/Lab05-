@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Lab05.Models.CharacterProgression>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Character Gear Tracker</h1>
+
+<!-- Links to the css style sheet-->
+<link rel="stylesheet" href="~/css/site.css" type="text/css" />
+
+<!--Links to the other pages-->
+<li><a href="~/Home">Home</a></li>
+<li><a href="~/Home/Info">Information</a></li>
+<li><a href="~/Home/SetEffects">Gear Set Effects</a></li>
+<li><a href="~/Home/Cubing">Cubing</a></li>
+<li><a href="~/Home/Starforce">Starforcing</a></li>
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.make)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gearGoal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gearMeso)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.make)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gearGoal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gearMeso)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
